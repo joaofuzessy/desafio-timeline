@@ -37,16 +37,15 @@ class Main extends Component{
             
             structure.map((e)=>{
                 
-                
                 if (e.event == "comprou"){
                     
-                    let transactionID = checkTransactionId(e.custom_data);
+                    let transactionIdloja = checkTransactionId(e.custom_data);
                     const itensCompra=[];
-                    
+
                     structure.map((e)=>{
                         
-                        let transactionID2 = checkTransactionId(e.custom_data);
-                        if(e.event != "comprou" && transactionID==transactionID2){
+                        let transactionIdProduto = checkTransactionId(e.custom_data);
+                        if(e.event == "comprou-produto" && transactionIdloja==transactionIdProduto){
                             itensCompra.push(e);
                             
                         }
@@ -58,7 +57,7 @@ class Main extends Component{
  
                 }
                 
-            } )
+            })
             console.log(comprasArray);
             return comprasArray;
         } 
