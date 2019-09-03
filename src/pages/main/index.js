@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
-import Timeline from '../../components/Timeline';
+
 
 class Main extends Component{
     
@@ -22,7 +22,7 @@ class Main extends Component{
             let transactionID;
             data.forEach(element => {
                         
-                if(element.key=="transaction_id"){
+                if(element.key==="transaction_id"){
                     transactionID = element.value;
                     
                 }
@@ -35,23 +35,24 @@ class Main extends Component{
         const structureData = (structure) =>{ 
             const comprasArray = [];
             
-            structure.map((e)=>{
+            structure.map((e)=>{ // Itera a primeira vez para achar os obj do tipo "comprou"
                 
-                if (e.event == "comprou"){
+                if (e.event === "comprou"){
                     
                     let transactionIdloja = checkTransactionId(e.custom_data);
                     const itensCompra=[];
 
-                    structure.map((e)=>{
+                    structure.map((e)=>{ // Itera novamente para verificar os produtos("comprou-produto") com o mesmo Transaction ID
                         
                         let transactionIdProduto = checkTransactionId(e.custom_data);
-                        if(e.event == "comprou-produto" && transactionIdloja==transactionIdProduto){
+                        
+                        if(e.event === "comprou-produto" && transactionIdloja === transactionIdProduto){
                             itensCompra.push(e);
                             
                         }
                     })
                     
-                    e.outros = itensCompra;
+                    e.produtos = itensCompra;
                     
                     comprasArray.push(e);
  
