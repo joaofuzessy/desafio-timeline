@@ -12,7 +12,7 @@ class CardHeader extends Component{
             <li>{this.props.event.dataVenda}</li>
             <li>Hora</li>
             <li><Icon path={'place'}/><span> {this.props.event.nomeLoja}</span></li>
-            <li><Icon path={'money'}/><span>R${this.props.event.vendasLoja}</span></li>
+            <li><Icon path={'money'}/><span>R${((this.props.event.vendasLoja).toFixed(2)).replace('.',',')}</span></li>
         </ul>
     </div>
     )
