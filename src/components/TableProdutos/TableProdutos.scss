@@ -1,0 +1,22 @@
+.TableProdutos{
+    background-color: #f8f8f8;
+    padding: 0 40px;
+    table{
+        width: 100%; 
+        
+        box-sizing: border-box;
+        border-collapse: collapse;
+
+        tr{
+            height: 50px;
+            border-bottom: 2px solid #f3f3f3;
+        }
+        td, th{
+            
+        }
+        th{
+            width: 50%;
+        }
+    }
+    
+}

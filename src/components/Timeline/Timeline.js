@@ -3,7 +3,7 @@ import './Timeline.scss';
 import api from '../../services/api';
 import structureData from '../../services/data';
 import CardHeader from '../CardHeader';
-
+import TableProdutos from '../TableProdutos';
 
 class Timeline extends Component{
     state = {
@@ -36,23 +36,7 @@ render(){
             <li>
                 <div className="Card">
                     <CardHeader event={event}/>
-                    <table>
-                        <thead>
-                            {//Fazer outro map aqui para pegar cada produto e depois componentizar tudo
-                            }
-                            <tr>
-                                <th>Produto</th>
-                                <th>Preço</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Camisa azul</td>
-                                <td>R$100,00</td>
-                            </tr>
-                        </tbody>
-                    
-                    </table>
+                    <TableProdutos/>
                 </div>  
             </li>
         </ul>
