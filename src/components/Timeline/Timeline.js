@@ -31,18 +31,23 @@ render(){
     return (
         
         this.state.compras.map((event,idx) => (
-        //<h1 key={event.timestamp}>{event.event}</h1>
+        
         <ul>
             <li>
                 <div className="Card">
                     <CardHeader event={event}/>
-                    <TableProdutos/>
+                    
+                    
+                    <TableProdutos event={event}/>
+                    
                 </div>  
             </li>
         </ul>
             
         
-        )))
+        ))
+        
+        )
     //<div>Oi  {this.state.compras.length}</div> ;
 
     

@@ -83,8 +83,14 @@ const structureData = (structure) =>{
         return 0;
     })   
     
-    
+    console.log(comprasArray);
     return comprasArray;
 } 
+
+
+
+
+
+
 
 export default structureData;

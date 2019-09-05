@@ -1,10 +1,43 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import './TableProdutos.scss';
 
 
 
+
 class TableProduto extends Component{
+
+    loadProdutos = (produto) =>{
+
+        let nomeProduto = '';
+        produto.custom_data.forEach(element => {
+                if(element.key==="product_name"){
+                     nomeProduto =  element.value;
+                }
+                return 0;
+            }
+        )
+            
+
+        let valorProduto = '';
+        produto.custom_data.forEach(element => {
+                if(element.key==="product_price"){
+                     valorProduto =  element.value;
+                }
+                return 0;
+            }
+        )
+
+
+        return (
+            <tr>
+                <td>{nomeProduto}</td>
+                <td>R${((valorProduto).toFixed(2)).replace('.',',')}</td>
+            </tr>
+        )
+    } 
+
+
     render(){
     return(
         <div className="TableProdutos">
@@ -18,10 +51,9 @@ class TableProduto extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Camisa azul</td>
-                        <td>R$100,00</td>
-                    </tr>
+                {this.props.event.produtos.map((produto,idx) => (
+                    this.loadProdutos(produto)
+                ))}
                 </tbody>
             
             </table>
