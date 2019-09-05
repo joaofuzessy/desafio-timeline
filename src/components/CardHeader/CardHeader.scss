@@ -1,0 +1,15 @@
+.CardHeader{
+    background-color: #feffff;
+    height: 65px;
+
+    ul{
+        list-style: none;
+
+        li{
+            display: inline-flex;
+            margin-right: 30px;
+            line-height: 65px;
+            font-size: 1em;
+        }
+    }
+}
