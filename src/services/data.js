@@ -25,8 +25,23 @@ const checkStoreName = (data) =>{
 
 
 const formatDate = (data) =>{
-    const dateFormated = data;
-    return dateFormated;
+    const dataEntrada = new Date(data);
+    const dia = dataEntrada.getDate();
+    const mes = dataEntrada.getMonth();
+    const ano = dataEntrada.getFullYear();
+    //const hora = dataEntrada.getTime();
+
+    const DataSaida = `${dia}/${mes}/${ano}`;
+    return DataSaida;
+}
+
+
+const formatTime = (data) =>{
+    const dataEntrada = new Date(data);
+    const hora = dataEntrada.getHours();
+    const minutos = dataEntrada.getMinutes();
+    const HoraSaida = `${hora}:${minutos}`;
+    return HoraSaida;
 }
 
 
@@ -42,11 +57,13 @@ const structureData = (structure) =>{
             let transactionIdloja = checkTransactionId(element.custom_data);
             let storeName = checkStoreName(element.custom_data);
             let salesDate = formatDate(element.timestamp);
+            let salesTime = formatTime(element.timestamp);
             let storeVendas = element.revenue;
             comprasArray[i].nomeLoja = storeName;
             comprasArray[i].transactionID = transactionIdloja;
             comprasArray[i].vendasLoja = storeVendas;
             comprasArray[i].dataVenda = salesDate; 
+            comprasArray[i].horaVenda = salesTime; 
 
 
             const itensCompra=[];
