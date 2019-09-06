@@ -7,9 +7,9 @@ import './TableProdutos.scss';
 
 class TableProduto extends Component{
     
-    loadProdutos = (produto) =>{
+    loadProdutos = (produto, idx) =>{
         return (
-            <tr>
+            <tr key={idx}> 
                 <td>{produto.nomeProduto}</td>
                 <td>R${((produto.valorProduto).toFixed(2)).replace('.',',')}</td>
             </tr>
@@ -31,7 +31,7 @@ class TableProduto extends Component{
                 </thead>
                 <tbody>
                 {this.props.event.produtos.map((produto,idx) => (
-                    this.loadProdutos(produto)
+                    this.loadProdutos(produto, idx)
                 ))}
                 </tbody>
             

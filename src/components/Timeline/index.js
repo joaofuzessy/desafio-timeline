@@ -35,7 +35,7 @@ render(){
 
         {this.state.compras.map((event,idx) => (
         
-        <ul>
+        <ul key={idx}>
             <li>
                 <Card>
                     <CardHeader event={event}/>
