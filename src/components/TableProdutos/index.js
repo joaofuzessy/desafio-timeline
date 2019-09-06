@@ -7,8 +7,6 @@ import './TableProdutos.scss';
 
 class TableProduto extends Component{
     
-
-
     loadProdutos = (produto) =>{
         return (
             <tr>

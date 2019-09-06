@@ -1,11 +1,9 @@
 const checkTransactionId = (data) =>{
     let transactionID;
-    data.forEach(element => {
-                
+    data.forEach(element => {  
         if(element.key === "transaction_id"){
             transactionID = element.value;             
-        }
-        
+        } 
     });
     return transactionID;
 }
@@ -13,8 +11,7 @@ const checkTransactionId = (data) =>{
 
 const checkStoreName = (data) =>{
     let storeName;
-    data.forEach(element => {
-                
+    data.forEach(element => {   
         if(element.key === "store_name"){
             storeName = element.value;             
         }
@@ -29,8 +26,6 @@ const formatDate = (data) =>{
     const dia = dataEntrada.getDate();
     const mes = dataEntrada.getMonth();
     const ano = dataEntrada.getFullYear();
-    //const hora = dataEntrada.getTime();
-
     const DataSaida = `${dia}/${mes}/${ano}`;
     return DataSaida;
 }
@@ -48,10 +43,8 @@ const getNomeProduto = (custom_data) =>{
     let nomeProduto = '';
     custom_data.forEach(element => {
             if(element.key==="product_name"){
-            nomeProduto = element.value;
-                
-            }
-            
+            nomeProduto = element.value;   
+            }  
         }
     )
     return nomeProduto;
@@ -61,10 +54,8 @@ const getValorProduto = (custom_data) =>{
     let valorProduto = '';
     custom_data.forEach(element => {
             if(element.key==="product_price"){
-            valorProduto = element.value;
-                
-            }
-            
+            valorProduto = element.value;    
+            } 
         }
     )
     return valorProduto;
