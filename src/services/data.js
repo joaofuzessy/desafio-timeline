@@ -92,7 +92,6 @@ const structureData = (structure) =>{
                     let transactionIdProduto = checkTransactionId(element.custom_data);
                     
                     if (transactionIdloja === transactionIdProduto){
-                        //itensCompra.push(element);
                         let nomeProduto = getNomeProduto(element.custom_data);
                         let valorProduto = getValorProduto(element.custom_data);
                         
