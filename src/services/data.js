@@ -62,6 +62,12 @@ const getValorProduto = (custom_data) =>{
 }
 
 
+const compareTimestampCompras = (a,b) => {
+    if(a.timestamp > b.timestamp) return -1;
+    if(a.timestamp < b.timestamp) return 1;
+    return 0;
+}
+
 
 const structureData = (structure) =>{ 
     const comprasArray = [];
@@ -74,12 +80,14 @@ const structureData = (structure) =>{
             let storeName = checkStoreName(element.custom_data);
             let salesDate = formatDate(element.timestamp);
             let salesTime = formatTime(element.timestamp);
+            let salesTimestamp = element.timestamp;
             let storeVendas = element.revenue;
             let compra = {
                 nomeLoja: storeName,
                 transactionID: transactionIdloja,
                 vendasLoja: storeVendas,
                 dataVenda: salesDate,
+                timestamp: salesTimestamp,
                 horaVenda: salesTime
             }
             let itensCompra=[];
@@ -112,8 +120,8 @@ const structureData = (structure) =>{
         return 0;
     })   
     
-    console.log(comprasArray);
-    return comprasArray;
+    let comprasArrayOrdenado = comprasArray.slice().sort(compareTimestampCompras);
+    return comprasArrayOrdenado;
 } 
 
 
