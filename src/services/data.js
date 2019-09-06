@@ -44,6 +44,32 @@ const formatTime = (data) =>{
     return HoraSaida;
 }
 
+const getNomeProduto = (custom_data) =>{
+    let nomeProduto = '';
+    custom_data.forEach(element => {
+            if(element.key==="product_name"){
+            nomeProduto = element.value;
+                
+            }
+            
+        }
+    )
+    return nomeProduto;
+}
+
+const getValorProduto = (custom_data) =>{
+    let valorProduto = '';
+    custom_data.forEach(element => {
+            if(element.key==="product_price"){
+            valorProduto = element.value;
+                
+            }
+            
+        }
+    )
+    return valorProduto;
+}
+
 
 
 const structureData = (structure) =>{ 
@@ -53,30 +79,43 @@ const structureData = (structure) =>{
         
         if (element.event === "comprou"){
             
-            comprasArray[i] = [];
             let transactionIdloja = checkTransactionId(element.custom_data);
             let storeName = checkStoreName(element.custom_data);
             let salesDate = formatDate(element.timestamp);
             let salesTime = formatTime(element.timestamp);
             let storeVendas = element.revenue;
-            comprasArray[i].nomeLoja = storeName;
-            comprasArray[i].transactionID = transactionIdloja;
-            comprasArray[i].vendasLoja = storeVendas;
-            comprasArray[i].dataVenda = salesDate; 
-            comprasArray[i].horaVenda = salesTime; 
+            let compra = {
+                nomeLoja: storeName,
+                transactionID: transactionIdloja,
+                vendasLoja: storeVendas,
+                dataVenda: salesDate,
+                horaVenda: salesTime
+            }
+            let itensCompra=[];
 
+            comprasArray.push(compra);
+           
 
-            const itensCompra=[];
             structure.map((element)=>{ // Itera novamente para verificar os produtos("comprou-produto") com o mesmo Transaction ID
                 if(element.event === "comprou-produto"){
                     let transactionIdProduto = checkTransactionId(element.custom_data);
+                    
                     if (transactionIdloja === transactionIdProduto){
-                        itensCompra.push(element);
+                        //itensCompra.push(element);
+                        let nomeProduto = getNomeProduto(element.custom_data);
+                        let valorProduto = getValorProduto(element.custom_data);
+                        
+                        let produto = {
+                                        nomeProduto: nomeProduto,
+                                        valorProduto: valorProduto
+                                         }
+                        itensCompra.push(produto);
                     }
                 }
                
                 return 0;
             })
+            
             comprasArray[i].produtos = itensCompra;
             i++;
         }
