@@ -1,6 +1,6 @@
 .CardHeader{
     background-color: #feffff;
-    height: 65px;
+    height: 80px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 
@@ -8,10 +8,29 @@
         list-style: none;
 
         li{
+           
+            display: inline-flex;
+            margin-right: 0px;
+            line-height: 2.5em;
+            font-size: 1em;
+            width: 50%;
+
+        }
+    }
+}
+
+@media all and (min-width: 680px){
+    .CardHeader{
+        height: 65px;
+
+        ul{
+            li{
+            width: auto;    
             display: inline-flex;
             margin-right: 30px;
-            line-height: 65px;
+            line-height: 4.063em;
             font-size: 1em;
+            }
         }
     }
 }
