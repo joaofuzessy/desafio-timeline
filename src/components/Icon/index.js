@@ -10,13 +10,13 @@ function Icon({
     
     
    
-    const cor = '#717171';
+    const colorDefault = color === undefined ? '#a5a5a5' : color;
     const sizeDefault = size === undefined ? '21px' : size;
     const viewBoxDefault = viewBox === undefined ? "0 0 25 25" : viewBox;
     
     return (
       <svg 
-        fill={cor}
+        fill={colorDefault}
         width={sizeDefault}
         height={sizeDefault}
         viewBox={viewBoxDefault}
@@ -46,6 +46,7 @@ function Icon({
     size: '16px',
     transform: '',
     path: '',
+    color: '#a5a5a5'
   };
   
   export default Icon;

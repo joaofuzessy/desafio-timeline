@@ -4,6 +4,8 @@ import api from '../../services/api';
 import structureData from '../../services/data';
 import CardHeader from '../CardHeader';
 import TableProdutos from '../TableProdutos';
+import Card from '../Card';
+
 
 class Timeline extends Component{
     state = {
@@ -13,7 +15,6 @@ class Timeline extends Component{
 
     componentDidMount(){
         this.loadTimeline();
-        this.renderTimeline();
     }
 
 
@@ -25,39 +26,35 @@ class Timeline extends Component{
         this.setState({compras: structureData(structure)});
     }
 
-    renderTimeline = () => {
-        return (
-            this.state.compras.map((event,idx) => (
-            
-            <ul>
-                <li>
-                    <div className="Card">
-                        <CardHeader event={event}/>
-                        
-                        
-                        <TableProdutos event={event}/>
-                        
-                    </div>  
-                </li>
-            </ul>
-            )
-            )
-        )           
+
+
+
+render(){
+    return (
+        <div className="TimeLine">
+
+        {this.state.compras.map((event,idx) => (
+        
+        <ul>
+            <li>
+                <Card>
+                    <CardHeader event={event}/>
+                    
+                    
+                    <TableProdutos event={event}/>
+                    
+                </Card>  
+            </li>
+        </ul>
+        
+        
+        ))
         }
 
-
-    render(){
-        return (
-            <div className="TimeLine">
-                {this.renderTimeline()}
-            </div>
-            
-            
-            )
-        
-        
+        </div>
+        )      
     }
-    }
+}
 
 
-    export default Timeline;
+export default Timeline;

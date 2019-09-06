@@ -1,0 +1,23 @@
+.Card{
+    position: relative;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);;
+    border-radius: 5px;
+    margin-bottom: 45px;
+}
+
+.Check{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: white;
+    border: 3px solid #d8d8d8;
+    position: absolute;
+    z-index: 10;
+    left: -55px;
+    top: 20px;
+    text-align: center;
+    
+    svg{
+        margin: 0 auto;
+    }
+}
