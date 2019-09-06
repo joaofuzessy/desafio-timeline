@@ -13,6 +13,7 @@ class Timeline extends Component{
 
     componentDidMount(){
         this.loadTimeline();
+        this.renderTimeline();
     }
 
 
@@ -24,36 +25,39 @@ class Timeline extends Component{
         this.setState({compras: structureData(structure)});
     }
 
-
-
-
-render(){
-    return (
-        
-        this.state.compras.map((event,idx) => (
-        
-        <ul>
-            <li>
-                <div className="Card">
-                    <CardHeader event={event}/>
-                    
-                    
-                    <TableProdutos event={event}/>
-                    
-                </div>  
-            </li>
-        </ul>
+    renderTimeline = () => {
+        return (
+            this.state.compras.map((event,idx) => (
             
+            <ul>
+                <li>
+                    <div className="Card">
+                        <CardHeader event={event}/>
+                        
+                        
+                        <TableProdutos event={event}/>
+                        
+                    </div>  
+                </li>
+            </ul>
+            )
+            )
+        )           
+        }
+
+
+    render(){
+        return (
+            <div className="TimeLine">
+                {this.renderTimeline()}
+            </div>
+            
+            
+            )
         
-        ))
         
-        )
-    //<div>Oi  {this.state.compras.length}</div> ;
-
-    
-      
-}
-}
+    }
+    }
 
 
-export default Timeline;
+    export default Timeline;
